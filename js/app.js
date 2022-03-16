@@ -19,9 +19,27 @@
 */
 
 /**
+ * References:
+ * Query Selector: https://classroom.udacity.com/nanodegrees/nd0011/parts/cd0428/modules/bde9b8c2-f509-49cf-8fd2-094c94c42582/lessons/acfca0fb-3671-427d-a5e2-2e1e4f92cd14/concepts/5ce62fbd-5ae8-4461-b394-bb93af3eb422
+ * 
+ */
+
+/**
  * Define Global Variables
  * 
 */
+
+/*Create a variable for getting the dynamic sections*/
+const sections = document.querySelectorAll('section');
+
+/*Create an empty list to store the navbar list items*/
+const navList = []
+
+/*Create a variable for getting the navBar by ID */
+const navBar = document.getElementById('navbar_list');
+
+/* Determines the number of navBar items by finding the number of 'sections'*/
+let navCount = sections.length
 
 
 /**
@@ -39,6 +57,9 @@
 */
 
 // build the nav
+function buildNav() {
+
+}
 
 
 // Add class 'active' to section when near top of viewport
