@@ -3,12 +3,11 @@
 
 
 ## Table of Contents
-
-* [Description] (#description)
-* [Features] (#features)
-* [Dependencies] (#dependencies)
-* [Usage] (#usage)
-* [Legal] (#legal)
+- [Description] (#description)
+- [Features] (#features)
+- [Dependencies] (#dependencies)
+- [Usage] (#usage)
+- [Legal] (#legal)
 
 
 ## Description
