@@ -37,7 +37,7 @@
 /* Create an array of the 'section' blocks to be defactored later. */
 const sections = Array.from(document.querySelectorAll("section"));
 
-/*Create a variable for getting the navBar by ID */
+/* Create a variable that gets the navBar by ID */
 const navBar = document.getElementById("navbar__list");
 
 
@@ -54,8 +54,9 @@ const navBar = document.getElementById("navbar__list");
  *
 */
 
-// build the nav
 /*
+build the nav
+
 Uses iteration to go through the content of 'sections' and turn them into
 usable links that will populate the navBar.
 
@@ -78,7 +79,7 @@ https://classroom.udacity.com/nanodegrees/nd0011/parts/cd0428/modules/bde9b8c2-f
 Appending the links to the navBar:
 https://classroom.udacity.com/nanodegrees/nd0011/parts/cd0428/modules/bde9b8c2-f509-49cf-8fd2-094c94c42582/lessons/9abd4182-4a6b-4aa2-93fc-6b01c7417012/concepts/ffaea72a-8c5f-486f-9b22-72503ceaec37
 */
-function buildNavbar() {
+const buildNavbar = () =>{
     for (const section of sections) {
         /*
         data-nav was used instead of id for navName because it already
@@ -109,12 +110,77 @@ function buildNavbar() {
 }
 
 
-// Add class 'active' to section when near top of viewport
+/* 
+Add class 'active' to section when near top of viewport
+
+
+References:
+getBoundingClientRect():
+https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+
+Knowledge Post: 
+https://knowledge.udacity.com/questions/85408
+
+How to check if you are in viewport: 
+https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
+
+Adding a class to an element:
+https://stackoverflow.com/questions/507138/how-to-add-a-class-to-a-given-element
+*/
+
+/* Check if an element is within the designated viewport parameters */
+const withinViewPort = (element) => {
+    let screen = element.getBoundingClientRect();
+    return (
+        screen.top >= 0 && 
+        screen.left >= 0 && 
+        screen.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        screen.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+/* 
+Checks if element is within viewport and then appends the active class
+to it if so. Because there was already a substantial chunk of CSS code 
+written in the original starter code, The class 'your-active-class' was 
+left intact for time-saving and consistency with styling.
+*/
+const migrateActiveClass = () => {
+
+    /* Iterate through each section */
+    for (const section of sections) {
+
+        /* If within the viewport, add the active class to section */
+        if (withinViewPort(section)) {
+            section.classList.add("your-active-class");
+            } 
+        
+        /* Otherwise, remove the active class from the section */
+        else {
+            section.classList.remove("your-active-class");
+        }
+    }
+}
+
+
 
 
 // Scroll to anchor ID using scrollTO event
+/* 
+References:
 
+scrollIntoView:
+https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
 
+Knowledge post:
+https://knowledge.udacity.com/questions/777807
+*/
+const anchorScroll = (navTab, section) => {
+    navTab.addEventListener("click", function(event) {
+        event.preventDefault();
+        section.scrollIntoView ({behavior: "smooth"})
+});
+}
 /**
  * End Main Functions
  * Begin Events
@@ -125,7 +191,15 @@ function buildNavbar() {
 buildNavbar();
 
 // Scroll to section on link click
+anchorScroll();
 
 // Set sections as active
+/*
+References:
 
+Adding event listeners:
+https://classroom.udacity.com/nanodegrees/nd0011/parts/cd0428/modules/bde9b8c2-f509-49cf-8fd2-094c94c42582/lessons/697ff796-a9d1-4eda-854a-b3d018ab4a67/concepts/49624782-5363-43ae-914a-83263fc6b0e0
+*/
+
+document.addEventListener("scroll", migrateActiveClass);
 
