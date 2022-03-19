@@ -43,4 +43,4 @@ This project should be browser-ready for most modern browsers.
 
 
 ## Legal
-The project, starter code, and concept all come from Udacity.com. The rest of the code, and minor modifications to the starter frameworks, are my own work.
+The project, starter code, and concept all come from Udacity.com. The rest of the code, and minor modifications to the starter frameworks, are my own work. References to relevant course content and internet searches have been added in the comments throughout app.js.
