@@ -107,7 +107,7 @@ const buildNavbar = () =>{
         Reference: 
         Mentor Response: https://knowledge.udacity.com/questions/817816
         */
-       anchorScroll(navTab, section);
+        anchorScroll(navTab, section);
     }
 }
 
@@ -154,11 +154,13 @@ const migrateActiveClass = () => {
         /* If within the viewport, add the active class to section */
         if (withinViewPort(section)) {
             section.classList.add("your-active-class");
+            document.querySelector(`a[href='#${section.id}']`).classList.add("active");
             } 
         
         /* Otherwise, remove the active class from the section */
         else {
             section.classList.remove("your-active-class");
+            document.querySelector(`a[href='#${section.id}']`).classList.remove("active");
         }
     }
 }
@@ -184,6 +186,36 @@ const anchorScroll = (navTab, section) => {
         section.scrollIntoView({behavior: "smooth"})
 });
 }
+
+
+/**
+ * Function to toggle the menu when the screen is too small
+ * Reference: https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
+ */
+const hamburger = document.querySelector(".hamburger");
+const navBarMenu = document.querySelector("#navbar__list");
+
+hamburger.addEventListener("click", mobileUI);
+
+function mobileUI() {
+    hamburger.classList.toggle("hide");
+    navBarMenu.classList.toggle("hide");
+}
+
+
+/**
+ * Function to close the menu when a link is clicked
+ * Reference: https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
+ */
+const menuLink = document.querySelectorAll(".menu_link");
+
+menuLink.forEach(n => n.addEventListener("click", closeUI));
+
+function closeUI() {
+    hamburger.classList.remove("hide");
+    navBarMenu.classList.remove("hide");
+}
+
 
 /**
  * End Main Functions
