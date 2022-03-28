@@ -60,23 +60,57 @@ section {
     min-height: 80vh;
 }
 
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
 
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+/* Reference: https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci*/
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.navbar__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.navbar__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align: right;
 }
 
 .navbar__menu li {
     display: inline-block;
+    margin-left: 5rem;
 }
 
 .navbar__menu .menu__link {
-    display: block;
-    padding: 1em;
+    font-size: 1.3rem;
     font-weight: bold;
     text-decoration: none;
     color: #000;
@@ -88,6 +122,11 @@ section {
     transition: ease 0.3s all;
 }
 
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
 /* Suggestion from Udacity Reviewer. Highlights active navTab */
 .active {
     background: #333;
@@ -101,6 +140,7 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+    border-bottom: 1px solid black;
 }
 
 /* Footer Styles */
@@ -122,12 +162,62 @@ section {
     text-align: left;
 }
 
+@media only screen and (max-width: 768px) {
+    
+    /* 
+    Reference: https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
+    Suggested class 'active', but this already exists in the code. I used 'hide' instead
+    */
+    #navbar__list {
+        position: fixed;
+        left: -100%;
+        top: 2rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 16px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05)
+    }
+
+    #navbar__list.hide {
+        left: 0;
+    }
+
+    .navbar__list.hide li {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.hide .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.hide .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.hide .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+}
+
 @media only screen and (min-width: 35em){
     .landing__container {
         max-width: 50em;
         padding: 4em;
     }
+
+    
 }
+
 
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
