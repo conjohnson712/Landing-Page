@@ -14,8 +14,22 @@
   IDs are only used for sections to connect menu anchors to sections -->
   <header class="page__header">
     <nav class="navbar__menu">
+      <!-- 
+      Suggestion from Reviewer. 
+      Also serves as a static 'scrollToTop' button
+      Reference: https://dev.to/devggaurav/let-s-build-a-responsive-navbar-and-hamburger-menu-using-html-css-and-javascript-4gci
+      -->
+      <a href="#" class="nav-logo">Landing Page</a>
+      
       <!-- Navigation starts as empty UL that will be populated with JS -->
-      <ul id="navbar__list"></ul>
+      <ul id="navbar__list">
+        
+      </ul>
+      <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
     </nav>
   </header>
   <main>
